@@ -21,7 +21,7 @@ Ext.define("GS.view.Main", {
                 
                 html: [
                     "The <b><a target='_blank' href='http://docs.sencha.com/touch/2-0/#!/api/Ext.plugin.PullRefresh'>PullRefresh</a></b> plugin is very nice when working" + 
-                    "with Lists, but unfortunately useless with Panels. PullRefreshPanel was created just to fill that!!<br><br>" +
+                    "with Lists, but unfortunately useless with Panels. PullRefreshPanel was created just to fill that gap!!<br><br>" +
                     "Included views in this demo are:" + 
                     "<ul>" +
                     	"<li>a List with the PullRefresh plugin" + 
