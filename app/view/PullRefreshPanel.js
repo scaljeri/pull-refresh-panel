@@ -1,13 +1,13 @@
 Ext.define('GS.view.PullRefreshPanel', {
 	extend: 'Ext.Panel', 
 	xtype: 'pullrefreshpanel',
-	requires: ['Ext.plugin.PullRefreshPanel'],
+	requires: ['Scaljeri.plugin.PullRefreshPanel'],
 
 	config: {
 		title: 'Pull to Refresh Demo',
     	plugins: [
         	{
-            	xclass: 'Ext.plugin.PullRefreshPanel',
+            	xclass: 'Scaljeri.plugin.PullRefreshPanel',
             	pullRefreshText: 'Pull down for more new Tweets!',
             	refreshFn: function(){
             		Ext.get('refresh-date').setHtml(Ext.Date.format(new Date(), 'j/d/Y h:m:s')) ;

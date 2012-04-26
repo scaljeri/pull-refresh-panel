@@ -5,7 +5,7 @@
  *
  */
 
-Ext.define('Ext.plugin.PullRefreshPanel', {
+Ext.define('Scaljeri.plugin.PullRefreshPanel', {
     extend: 'Ext.Component',
     alias: 'plugin.pullrefreshpanel',
     requires: ['Ext.DateExtras'],
