@@ -221,12 +221,10 @@ Ext.define('Ext.plugin.PullRefresh', {
     },
 
     setMaxScroller: function(scroller, position) {
-	console.log("setMaxScroller") ;
         this.maxScroller = position;
     },
 
     onScrollChange: function(scroller, x, y) {
-	console.log("onScrollChange " + y + " > " + this.maxScroller.y) ;
         if (y < 0) {
             this.onBounceTop(y);
         }
@@ -268,7 +266,6 @@ Ext.define('Ext.plugin.PullRefresh', {
 
     onScrollerDragEnd: function() {
         var me = this;
-	console.log("onScrollerDragEnd") ;
         if (me.isRefreshing) {
             var list = me.getList(),
                 scroller = list.getScrollable().getScroller();

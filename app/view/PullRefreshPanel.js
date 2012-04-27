@@ -11,7 +11,8 @@ Ext.define('GS.view.PullRefreshPanel', {
             	pullRefreshText: 'Pull down for more new Tweets!',
             	refreshFn: function(){
             		Ext.get('refresh-date').setHtml(Ext.Date.format(new Date(), 'j/d/Y h:m:s')) ;
-            		this.refreshReady();
+            		var me = this ;
+            		setTimeout( function(){ me.refreshReady();}, 1000) ;
             	}
         	}
     	],
