@@ -10,6 +10,9 @@ Ext.define('Scaljeri.plugin.PullRefreshPanel', {
     alias: 'plugin.pullrefreshpanel',
 
     init: function(list) {
+   		if ( (this.isList = list.getStore && list.getStore() ? true : false) == true ) {
+    		return this.callParent(arguments) ;
+    	}
         var me = this,
             pullTpl = me.getPullTpl(),
             element = me.element;
@@ -38,6 +41,9 @@ Ext.define('Scaljeri.plugin.PullRefreshPanel', {
     },
 
     onBounceTop: function(y) {
+    	if ( this.isList == true ) {
+    		return this.callParent(arguments) ;
+    	}
         var me = this;
 
         if (!me.isReleased) {
@@ -60,6 +66,10 @@ Ext.define('Scaljeri.plugin.PullRefreshPanel', {
     },
 
     onScrollerDragEnd: function() {
+    	if ( this.isList == true ) {
+    		return this.callParent(arguments) ;
+    	}
+    	
         var me = this;
 
         if (me.isRefreshing) {
@@ -76,6 +86,9 @@ Ext.define('Scaljeri.plugin.PullRefreshPanel', {
     },
 
     loadStore: function() {
+    	if ( this.isList == true ) {
+    		return this.callParent(arguments) ;
+    	}
         var me = this;
 
         me.setViewState('loading');

@@ -8,7 +8,8 @@ Ext.define('GS.view.ListView', {
 		store: 'DummyStore',
     	plugins: [
         	{
-            	xclass: 'Ext.plugin.PullRefresh',
+            	//xclass: 'Ext.plugin.PullRefresh',
+            	xclass: 'Scaljeri.plugin.PullRefreshPanel',
             	pullRefreshText: 'Pull down for more new Tweets!',
         	}
     	],
