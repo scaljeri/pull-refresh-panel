@@ -29,7 +29,7 @@ Ext.define('GS.view.PullRefreshPanel', {
     	         { 
                 	 centered: true,
     	        	 html: 'Pull to update: <span id="refresh-date">' + Ext.Date.format(new Date(), 'j/d/Y h:m:s') + '</span>',
-    	        	 style: 'background-color: #5E99CC;border: 2px solid white:border-radius: 15px;padding:5px;'
+    	        	 cls: 'pull-message'
     	    	}
     	   	]
 

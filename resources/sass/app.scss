@@ -11,9 +11,17 @@
 @include sencha-toolbar-forms;
 @include sencha-indexbar;
 @include sencha-list;
+@include sencha-list-pullrefresh ;
 @include sencha-layout;
 @include sencha-carousel;
 @include sencha-form;
 @include sencha-msgbox;
 
 // Your custom code goes here...
+
+.pull-message {
+	background-color: #5E99CC;
+	border: 2px solid white;
+	border-radius: 15px;
+	padding:5px;
+}
