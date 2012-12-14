@@ -18,7 +18,7 @@ To use this plugin a callback function is required which needs to perform the ac
         	}
     	],
 
-If this plugin is used on the ListView it behaves identical to the PullRefresh plugin.
+If this plugin is attached to Ext.dataview.List, it behaves identical to the PullRefresh plugin.
 
 Furthermore, to be able to build this demo, you have to link the touch folder into the root of this project
 
