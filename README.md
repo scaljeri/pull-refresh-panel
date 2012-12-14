@@ -12,7 +12,7 @@ To use this plugin a callback function is required which needs to perform the ac
             		xclass: 'Scaljeri.plugin.PullRefreshPanel',
             		pullRefreshText: 'Pull down to update!',
             		refreshFn: function(){
-				Ext.get('refresh-date').setHtml(Ext.Date.format(new Date(), 'm/d/Y G:i:s')) ;
+					Ext.get('refresh-date').setHtml(Ext.Date.format(new Date(), 'm/d/Y G:i:s')) ;
             			this.refreshReady(); // call this function when ready
             		}
         	}
