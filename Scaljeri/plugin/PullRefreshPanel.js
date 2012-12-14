@@ -31,17 +31,24 @@ Ext.define('Scaljeri.plugin.PullRefreshPanel', {
     alias: 'plugin.pullrefreshpanel',
 
     init: function(list) {
-   		if ( (this.isList = list.getStore && list.getStore() ? true : false) == true ) {
+
+   	if ( (this.isList = list.getStore && list.getStore() ? true : false) == true ) { // is list a list ?
     		return this.callParent(arguments) ;
     	}
+	this.setList(list);
+
         var me = this,
             pullTpl = me.getPullTpl(),
             element = me.element;
         me.scrollable = list.getScrollable().getScroller();
 
+        if (!me.scrollable) {
+            return;
+        }
+
         me.lastUpdated = new Date();
 
-        list.insert(10, me);
+        list.add(me);
 
         pullTpl.overwrite(element, {
             message: me.getPullRefreshText(),
@@ -50,7 +57,7 @@ Ext.define('Scaljeri.plugin.PullRefreshPanel', {
 
         me.loadingElement = element.getFirstChild();
         me.messageEl = element.down('.x-list-pullrefresh-message');
-        me.updatedEl = element.down('.x-list-pullrefresh-updated > span');
+        me.updatedEl = element.down('.x-list-pullrefresh-updated');
 
         me.maxScroller = me.scrollable.getMaxPosition();
 
@@ -59,51 +66,6 @@ Ext.define('Scaljeri.plugin.PullRefreshPanel', {
             scroll: me.onScrollChange,
             scope: me
         });
-    },
-
-    onBounceTop: function(y) {
-    	if ( this.isList == true ) {
-    		return this.callParent(arguments) ;
-    	}
-        var me = this;
-
-        if (!me.isReleased) {
-            if (!me.isRefreshing && -y >= me.pullHeight + 10) {
-                me.isRefreshing = true;
-
-                me.setViewState('release');
-
-                me.scrollable.getContainer().onBefore({
-                    dragend: 'onScrollerDragEnd',
-                    single: true,
-                    scope: me
-                });
-            }
-            else if (me.isRefreshing && -y < me.pullHeight + 10) {
-                me.isRefreshing = false;
-                me.setViewState('pull');
-            }
-        }
-    },
-
-    onScrollerDragEnd: function() {
-    	if ( this.isList == true ) {
-    		return this.callParent(arguments) ;
-    	}
-    	
-        var me = this;
-
-        if (me.isRefreshing) {
-
-            me.scrollable.minPosition.y = -me.pullHeight;
-            me.scrollable.on({
-                scrollend: 'loadStore',
-                single: true,
-                scope: me
-            });
-
-            me.isReleased = true;
-        }
     },
 
     loadStore: function() {
@@ -130,4 +92,35 @@ Ext.define('Scaljeri.plugin.PullRefreshPanel', {
         me.scrollable.minPosition.y = 0;
         me.scrollable.scrollTo(null, 0, true);
     },
+
+    // this function is identical to PullRefresh, except for the last line!!
+    onBounceTop: function(y) {
+        var me = this,
+            pullHeight = me.pullHeight,
+            list = me.getList(),
+            scroller = list.getScrollable().getScroller();
+
+        if (!me.isReleased) {
+            if (!pullHeight) {
+                me.onPainted();
+                pullHeight = me.pullHeight;
+            }
+            if (!me.isRefreshing && -y >= pullHeight + 10) {
+                me.isRefreshing = true;
+
+                me.setViewState('release');
+
+                scroller.getContainer().onBefore({
+                    dragend: 'onScrollerDragEnd',
+                    single: true,
+                    scope: me
+                });
+            }
+            else if (me.isRefreshing && -y < pullHeight + 10) {
+                me.isRefreshing = false;
+                me.setViewState('pull');
+            }
+        }
+        //me.getTranslatable().translate(0, -y);
+    }
 });

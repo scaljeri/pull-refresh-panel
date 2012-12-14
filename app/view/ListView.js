@@ -6,17 +6,16 @@ Ext.define('GS.view.ListView', {
 	config: {
 		title: 'Pull to Refresh Demo',
 		store: 'DummyStore',
-    	plugins: [
+    		plugins: [
         	{
-            	//xclass: 'Ext.plugin.PullRefresh',
-            	xclass: 'Scaljeri.plugin.PullRefreshPanel',
-            	pullRefreshText: 'Pull down for more new Tweets!',
-        	}
-    	],
+            		//xclass: 'Ext.plugin.PullRefresh',
+            		xclass: 'Scaljeri.plugin.PullRefreshPanel',
+            		pullRefreshText: 'Pull down for more new Tweets!'
+        	}],
 
-    	itemTpl: [
-        	'<img src="{img}" alt="{name} photo" />',
-        	'<div class="tweet"><b>{name}:</b> {text}</div>'
-    	]
+    		itemTpl: [
+        		'<img src="{img}" alt="{name} photo" />',
+        		'<div class="tweet"><b>{name}:</b> {text}</div>'
+    		]
 	}
 });

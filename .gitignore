@@ -1,0 +1,7 @@
+resources/css/
+resources/sass/.sass-cache
+touch/
+*.swp
+.sencha_backup/
+archive/
+build/
