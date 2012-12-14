@@ -11,7 +11,7 @@ Ext.define('GS.view.PullRefreshPanel', {
             		refreshFn: function(){
 				var me = this ;
 				Ext.defer( function() {
-            				Ext.get('refresh-date').setHtml(Ext.Date.format(new Date(), 'j/d/Y h:m:s')) ;
+            				Ext.get('refresh-date').setHtml(Ext.Date.format(new Date(), 'm/d/Y G:i:s')) ;
 					me.refreshReady() ;
 				}, 1000) ;
             		}
@@ -30,7 +30,7 @@ Ext.define('GS.view.PullRefreshPanel', {
     	              { 
 				xtype: 'panel',
 				items: [{
-    	        	 		html: '<div id="da-msg">Pull to update: <span id="refresh-date">' + Ext.Date.format(new Date(), 'j/d/Y h:m:s') + '</span></div>',
+    	        	 		html: '<div id="da-msg">Pull to update: <span id="refresh-date">' + Ext.Date.format(new Date(), 'm/d/Y G:i:s') + '</span></div>',
 					centered: true
 				}],
     	        	 cls: 'pull-message'

@@ -58,6 +58,7 @@ Ext.define('Scaljeri.plugin.PullRefreshPanel', {
         me.loadingElement = element.getFirstChild();
         me.messageEl = element.down('.x-list-pullrefresh-message');
         me.updatedEl = element.down('.x-list-pullrefresh-updated');
+	window.x = me.updatedEl ;
 
         me.maxScroller = me.scrollable.getMaxPosition();
 
@@ -80,20 +81,11 @@ Ext.define('Scaljeri.plugin.PullRefreshPanel', {
     },
     
     refreshReady: function() {
-    	var me = this ;
-        me.scrollable.on({
-        	scrollend: function(){
-        		me.resetRefreshState();
-        	},
-        	delay: 500,
-        	single: true,
-        	scope: me
-        }) ;
-        me.scrollable.minPosition.y = 0;
-        me.scrollable.scrollTo(null, 0, true);
+        this.scrollable.minPosition.y = 0;
+        this.scrollable.scrollTo(null, 0, true);
+        this.resetRefreshState();
     },
 
-    // this function is identical to PullRefresh, except for the last line!!
     onBounceTop: function(y) {
         var me = this,
             pullHeight = me.pullHeight,
@@ -121,6 +113,7 @@ Ext.define('Scaljeri.plugin.PullRefreshPanel', {
                 me.setViewState('pull');
             }
         }
-        //me.getTranslatable().translate(0, -y);
+	if ( this.isList == true ) 
+        	me.getTranslatable().translate(0, -y);
     }
 });
