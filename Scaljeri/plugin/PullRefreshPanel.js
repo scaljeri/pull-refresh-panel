@@ -30,6 +30,11 @@ Ext.define('Scaljeri.plugin.PullRefreshPanel', {
     extend: 'Ext.plugin.PullRefresh',
     alias: 'plugin.pullrefreshpanel',
 
+    config: {
+	refreshFn: null
+    },
+
+
     init: function(list) {
 
    	if ( (this.isList = list.getStore && list.getStore() ? true : false) == true ) { // is list a list ?
