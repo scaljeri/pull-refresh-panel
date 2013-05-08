@@ -23,4 +23,4 @@ If this plugin is attached to Ext.dataview.List, it behaves identical to the Pul
 Furthermore, to be able to build this demo, you have to link the touch folder into the root of this project
 
         $> cd pull-refresh-panel
-        $> ln -s /Path/To/sencha-touch-2.1.0 ./touch
+        $> ln -s /Path/To/sencha-touch-2.2.0 ./touch
